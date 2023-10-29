@@ -8,7 +8,7 @@ try:
     while True:
 
         angle = input("Entrez l'angle")
-        sm.servo_write(angle)
+        sm.servo_write(int(angle))
 
 
 except KeyboardInterrupt:
