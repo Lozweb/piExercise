@@ -30,10 +30,9 @@ def servo_write(angle):
 
 def loop():
     while True:
-        servo_write(180)
-        time.sleep(2)
-        servo_write(0)
-        time.sleep(2)
+        for dc in range(0, 180):
+            servo_write(dc)
+            time.sleep(0.01)
 
 
 def destroy():
