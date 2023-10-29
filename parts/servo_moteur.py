@@ -53,4 +53,4 @@ def destroy():
         destroy()
 
 
-print(__name__)
+loop()
