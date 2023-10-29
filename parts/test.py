@@ -55,7 +55,7 @@ if __name__ == '__main__':
 
             servo_write(val_X*0.70)
 
-            time.sleep(0.1)
+            time.sleep(0.001)
 
     except KeyboardInterrupt:
         destroy()
