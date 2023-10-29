@@ -53,7 +53,7 @@ if __name__ == '__main__':
             val_Y = adc.get_y()
             val_X = adc.get_x()
 
-            print("x:" + val_X + " y: " + val_Y)
+            print("x:" + str(val_X) + " y: " + str(val_Y))
 
             # servo_write(val_X*0.70)
 
