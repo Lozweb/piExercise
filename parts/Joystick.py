@@ -24,8 +24,8 @@ def setup():
 def loop():
     while True:
         val_Z = GPIO.input(Z_Pin)
-        val_Y = adc.analogRead(0)
-        val_X = adc.analogRead(1)
+        val_Y = adc.analog_read(0)
+        val_X = adc.analog_read(1)
         print('value_X: %d ,\tvlue_Y: %d ,\tvalue_Z: %d' % (val_X, val_Y, val_Z))
         time.sleep(0.01)
 
