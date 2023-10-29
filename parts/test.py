@@ -50,10 +50,12 @@ if __name__ == '__main__':
 
         while True:
             val_Z = GPIO.input(joy_pin)
-            val_Y = adc.analog_read(0)
-            val_X = adc.analog_read(1)
+            val_Y = adc.get_y()
+            val_X = adc.get_x()
 
-            servo_write(val_X*0.70)
+            print("x:" + val_X + " y: " + val_Y)
+
+            # servo_write(val_X*0.70)
 
             time.sleep(0.01)
 
