@@ -5,7 +5,7 @@ class ADCDevice(object):
     def __init__(self):
         self.cmd = 0
         self.address = 0
-        self.bus = smbus.SMBus(0)
+        self.bus = smbus.SMBus(1)
 
     def detect_i2_c(self, addr):
         try:
