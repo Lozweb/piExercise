@@ -21,7 +21,7 @@ def setup():
 
 
 def servo_write(angle):
-    if angle<0:
+    if angle < 0:
         angle = 0
     elif angle > 180:
         angle = 180
@@ -30,14 +30,10 @@ def servo_write(angle):
 
 def loop():
     while True:
-        for dc in range(0, 181, 1):
-            servo_write(dc)
-            time.sleep(0.001)
-            time.sleep(0.5)
-        for dc in range(180, -1, -1):
-            servo_write(dc)
-            time.sleep(0.001)
-            time.sleep(0.5)
+        servo_write(180)
+        time.sleep(2)
+        servo_write(0)
+        time.sleep(2)
 
 
 def destroy():
@@ -45,9 +41,8 @@ def destroy():
     GPIO.cleanup()
 
 
-
 if __name__ == '__main__':
-    print ('Program is starting...')
+    print('Program is starting...')
     setup()
 try:
     loop()
