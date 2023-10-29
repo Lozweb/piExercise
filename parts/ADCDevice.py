@@ -26,9 +26,6 @@ class ADS7830(ADCDevice):
         super(ADS7830, self).__init__()
         self.address = 0x4b
 
-    def analog_read(self, chn):
-        return self.bus.read_byte_data(self.address, 0x84 | (((chn << 2 | chn >> 1) & 0x07) << 4))
-
     def get_y(self):
         return self.bus.read_byte_data(self.address, 0x84)
 
