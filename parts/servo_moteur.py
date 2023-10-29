@@ -51,3 +51,6 @@ def destroy():
         loop()
     except KeyboardInterrupt:
         destroy()
+
+
+print(__name__)
