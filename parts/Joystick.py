@@ -8,15 +8,7 @@ adc = ADCDevice()
 
 def setup():
     global adc
-    if adc.detect_i2_c(0x48):
-        adc = PCF8591()
-    elif adc.detect_i2_c(0x4b):
-        adc = ADS7830()
-    else:
-        print("No correct I2C address found, \n"
-              "Please use command 'i2cdetect -y 1' to check the I2C address! \n"
-              "Program Exit. \n");
-        exit(-1)
+    adc = ADS7830()
     GPIO.setmode(GPIO.BOARD)
     GPIO.setup(Z_Pin, GPIO.IN, GPIO.PUD_UP)
 

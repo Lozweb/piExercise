@@ -22,21 +22,6 @@ class ADCDevice(object):
         self.bus.close()
 
 
-class PCF8591(ADCDevice):
-    def __init__(self):
-        super(PCF8591, self).__init__()
-        self.cmd = 0x40
-        self.address = 0x48
-
-    def analog_read(self, chn):
-        value = self.bus.read_byte_data(self.address, self.cmd + chn)
-        value = self.bus.read_byte_data(self.address, self.cmd + chn)
-        return value
-
-    def analog_write(self, value):
-        self.bus.write_byte_data(self.address, cmd, value)
-
-
 class ADS7830(ADCDevice):
     def __init__(self):
         super(ADS7830, self).__init__()
@@ -44,5 +29,6 @@ class ADS7830(ADCDevice):
         self.address = 0x4b
 
     def analog_read(self, chn):
+        print(chn)
         value = self.bus.read_byte_data(self.address, self.cmd | (((chn << 2 | chn >> 1) & 0x07) << 4))
         return value
