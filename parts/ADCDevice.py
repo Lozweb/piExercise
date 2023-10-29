@@ -29,6 +29,5 @@ class ADS7830(ADCDevice):
         self.address = 0x4b
 
     def analog_read(self, chn):
-        print(chn)
         value = self.bus.read_byte_data(self.address, self.cmd | (((chn << 2 | chn >> 1) & 0x07) << 4))
         return value
