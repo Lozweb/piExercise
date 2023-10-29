@@ -30,9 +30,8 @@ def servo_write(angle):
 
 def loop():
     while True:
-        for dc in range(0, 180):
-            servo_write(dc)
-            time.sleep(0.01)
+        angle = input("Entrez l'angle")
+        servo_write(int(angle))
 
 
 def destroy():
