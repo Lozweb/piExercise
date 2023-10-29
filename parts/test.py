@@ -49,7 +49,7 @@ if __name__ == '__main__':
     try:
 
         while True:
-            val_Z = GPIO.input(Z_Pin)
+            val_Z = GPIO.input(joy_pin)
             val_Y = adc.analog_read(0)
             val_X = adc.analog_read(1)
 
