@@ -1,6 +1,6 @@
 import RPi.GPIO as GPIO
 import time
-from parts.archived.ADCDevice import *
+from ADCDevice import *
 
 # define the pins connected to L293D
 motoRPin1 = 13
