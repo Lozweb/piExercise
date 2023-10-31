@@ -63,15 +63,12 @@ def change_direction(current_direction):
 
 def loop():
 
-    global current_direction
-    current_direction = "forward"
-
     while True:
-        manette.controler.button_trigger_r.when_released = current_direction = change_direction(current_direction)
+        manette.controler.button_trigger_r.when_released = manette.on_button_trigger_r_released
         manette.controler.trigger_r.when_moved = manette.on_trigger_rt_moved
         acceleration = manette.trig_rt_pos
-        print("direction : {0} acceleration : {1}".format(current_direction, acceleration))
-        motor(current_direction, acceleration)
+        print("direction : {0} acceleration : {1}".format(manette.direction, acceleration))
+        motor(manette.direction, acceleration)
         time.sleep(0.2)
 
 
