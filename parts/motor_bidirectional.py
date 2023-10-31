@@ -26,7 +26,7 @@ def mapNUM(value, fromLow, fromHigh, toLow, toHigh):
 # motor function: determine the direction and speed of the motor according to the input ADC value input
 def motor(direction, trig_pos):
 
-    value = (round(trig_pos*100)-255)*-1
+    value = (round(trig_pos*100))*-1
 
     print(value)
 
@@ -45,8 +45,8 @@ def motor(direction, trig_pos):
         GPIO.output(motoRPin2, GPIO.LOW)
         print('Motor Stop...')
 
-    p.start(mapNUM(abs(value), 0, 128, 0, 100))
-    print('The PWM duty cycle is %d%%\n' % (abs(value) * 100 / 127))  # print PMW duty cycle.
+    p.start(mapNUM(value, 0, 128, 0, 100))
+    print('The PWM duty cycle is %d%%\n' % value) # print PMW duty cycle.
 
 
 def loop():
