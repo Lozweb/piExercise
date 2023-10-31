@@ -61,7 +61,7 @@ try:
         controller.axis_l.when_moved = on_axis_moved
         controller.axis_r.when_moved = on_axis_moved
 
-        controller.info()
+        controller.get_event()
 
         signal.pause()
 
