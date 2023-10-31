@@ -27,6 +27,7 @@ if __name__ == '__main__':
             manette.controler.axis_l.when_moved = manette.on_axis_l_moved
             manette.controler.axis_r.when_moved = manette.on_axis_l_moved
             target_pos = round(manette.current_ly_pos + 5)
+            print(target_pos)
             servo.servo_write(target_pos)
             signal.pause()
 
