@@ -26,7 +26,7 @@ def mapNUM(value, fromLow, fromHigh, toLow, toHigh):
 # motor function: determine the direction and speed of the motor according to the input ADC value input
 def motor(direction, trig_pos):
 
-    value = (round(trig_pos*100))*-1
+    value = (round(trig_pos*100))
 
     print(value)
 
