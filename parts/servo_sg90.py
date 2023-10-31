@@ -5,11 +5,14 @@ class Sg90:
 
     def __init__(self, default_pos, servo_pin):
         self.SERVO_PIN = servo_pin
+        GPIO.setmode(GPIO.BOARD)
+        GPIO.setup(self.SERVO_PIN, GPIO.OUT)
+        GPIO.output(self.SERVO_PIN, GPIO.LOW)
+        self.PI_PORT = GPIO.PWM(self.SERVO_PIN, 50)
         self.OFFSET_DUTY = 0.5
         self.SERVO_MIN_DUTY = 2.5 + self.OFFSET_DUTY
         self.SERVO_MAX_DUTY = 12.5 + self.OFFSET_DUTY
         self.SERVO_DEFAULT_POS = default_pos
-        self.PI_PORT = GPIO.PWM(self.SERVO_PIN, 50)
         self.current_pos = self.SERVO_DEFAULT_POS
 
     @staticmethod

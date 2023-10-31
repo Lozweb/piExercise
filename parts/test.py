@@ -1,5 +1,4 @@
 import RPi.GPIO as GPIO
-import time
 from manette import Manette
 from servo_sg90 import Sg90
 import signal
@@ -8,10 +7,8 @@ import signal
 manette = Manette(0)
 servo = Sg90(90, 12)
 
+
 def setup():
-    GPIO.setmode(GPIO.BOARD)
-    GPIO.setup(servo.SERVO_PIN, GPIO.OUT)
-    GPIO.output(servo.SERVO_PIN, GPIO.LOW)
     servo.PI_PORT.start(0)
     servo.servo_write(servo.SERVO_DEFAULT_POS)
 
