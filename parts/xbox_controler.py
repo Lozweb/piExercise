@@ -4,7 +4,7 @@ from xbox360controller import Xbox360Controller
 
 def on_button_pressed(button):
     print('Button {0} was pressed'.format(button.name))
-    controller.set_rumble(0.5, 0.5, duration=1000)
+    # controller.set_rumble(0.5, 0.5, duration=1000)
 
 
 def on_button_released(button):
@@ -21,6 +21,8 @@ def on_trigger_moved(axis):
 
 try:
     with Xbox360Controller(0, axis_threshold=0.2) as controller:
+
+        print(str(controller.buttons))
 
         controller.button_a.when_pressed = on_button_pressed
         controller.button_a.when_released = on_button_released
@@ -60,8 +62,6 @@ try:
 
         controller.axis_l.when_moved = on_axis_moved
         controller.axis_r.when_moved = on_axis_moved
-
-        controller.get_event()
 
         signal.pause()
 
