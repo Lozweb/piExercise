@@ -1,6 +1,6 @@
 import RPi.GPIO as GPIO
 import time
-from ADCDevice import *
+from parts.archived.ADCDevice import *
 
 # define the pins connected to L293D
 motoRPin1 = 13
@@ -60,7 +60,6 @@ def loop():
         time.sleep(0.2)
 
 
-
 def destroy():
     p.stop()  # stop PWM
     GPIO.cleanup()
@@ -73,4 +72,3 @@ if __name__ == '__main__':  # Program entrance
         loop()
     except KeyboardInterrupt:  # Press ctrl-c to end the program.
         destroy()
-
