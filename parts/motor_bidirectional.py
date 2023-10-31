@@ -62,7 +62,7 @@ def loop():
     current_direction = "forward"
 
     while True:
-        manette.controler.button_trigger_r.when_pressed = current_direction = change_direction(current_direction)
+        manette.controler.button_trigger_r.when_released = current_direction = change_direction(current_direction)
         manette.controler.trigger_r.when_moved = manette.on_trigger_rt_moved
         acceleration = manette.trig_rt_pos
         print("direction : {0} acceleration : {1}".format(current_direction, acceleration))
