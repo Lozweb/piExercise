@@ -1,29 +1,20 @@
 import RPi.GPIO as GPIO
 import time
-from ADCDevice import *
+from manette import Manette
 
 # define the pins connected to L293D
 motoRPin1 = 13
 motoRPin2 = 11
 enablePin = 15
-adc = ADCDevice()  # Define an ADCDevice class object
+manette = Manette(0)
 
 
 def setup():
-    global adc
-    if adc.detectI2C(0x4b):  # Detect the pcf8591.
-        adc = ADS7830()
-    else:
-        print("No correct I2C address found, \n"
-              "Please use command 'i2cdetect -y 1' to check the I2C address! \n"
-              "Program Exit. \n")
-        exit(-1)
     global p
     GPIO.setmode(GPIO.BOARD)
     GPIO.setup(motoRPin1, GPIO.OUT)  # set pins to OUTPUT mode
     GPIO.setup(motoRPin2, GPIO.OUT)
     GPIO.setup(enablePin, GPIO.OUT)
-
     p = GPIO.PWM(enablePin, 1000)  # creat PWM and set Frequence to 1KHz
     p.start(0)
 
@@ -34,34 +25,47 @@ def mapNUM(value, fromLow, fromHigh, toLow, toHigh):
 
 
 # motor function: determine the direction and speed of the motor according to the input ADC value input
-def motor(ADC):
-    value = ADC - 128
-    if value > 0:  # make motor turn forward
-        GPIO.output(motoRPin1, GPIO.HIGH)  # motoRPin1 output HIHG level
-        GPIO.output(motoRPin2, GPIO.LOW)  # motoRPin2 output LOW level
+def motor(direction, trig_pos):
+    value = (trig_pos*100) - 128
+
+    if direction == "forward":
+        GPIO.output(motoRPin1, GPIO.HIGH)
+        GPIO.output(motoRPin2, GPIO.LOW)
         print('Turn Forward...')
-    elif value < 0:  # make motor turn backward
+
+    elif direction == "backward":
         GPIO.output(motoRPin1, GPIO.LOW)
         GPIO.output(motoRPin2, GPIO.HIGH)
         print('Turn Backward...')
+
     else:
         GPIO.output(motoRPin1, GPIO.LOW)
         GPIO.output(motoRPin2, GPIO.LOW)
         print('Motor Stop...')
+
     p.start(mapNUM(abs(value), 0, 128, 0, 100))
     print('The PWM duty cycle is %d%%\n' % (abs(value) * 100 / 127))  # print PMW duty cycle.
 
 
 def loop():
+    global current_direction
+    current_direction = "forward"
     while True:
-        value = adc.analogRead(0)  # read ADC value of channel 0
-        print('ADC Value : %d' % value)
-        motor(value)
+
+        if manette.trig_r_press:
+            if current_direction == "forward":
+                current_direction = "backward"
+            else:
+                current_direction = "forward"
+        acceleration = round(manette.trig_rt_pos)
+        print("direction : {0} acceleration : {1}".format(current_direction, acceleration))
+        motor(current_direction, acceleration)
         time.sleep(0.2)
 
 
 def destroy():
     p.stop()  # stop PWM
+    manette.controler.close()
     GPIO.cleanup()
 
 
