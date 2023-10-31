@@ -1,46 +1,24 @@
 import RPi.GPIO as GPIO
 import time
-from ADCDevice import *
+from manette import Manette
+from servo_sg90 import Sg90
+import signal
 
-# pin 11 = GPIO17
-# pin 12 = GPIO18
 
-joy_pin = 12
-servo_pin = 11
-converter = ADCDevice()
-OFFSET_DUTY = 0.5
-SERVO_MIN_DUTY = 2.5 + OFFSET_DUTY
-SERVO_MAX_DUTY = 12.5 + OFFSET_DUTY
-
+manette = Manette(0)
+servo = Sg90(90, 12)
 
 def setup():
-    global adc
-    global p
-    adc = ADS7830()
     GPIO.setmode(GPIO.BOARD)
-    GPIO.setup(joy_pin, GPIO.IN, GPIO.PUD_UP)
-    GPIO.setup(servo_pin, GPIO.OUT)
-    GPIO.output(servo_pin, GPIO.LOW)
-    p = GPIO.PWM(servo_pin, 50)
-    p.start(0)
+    GPIO.setup(servo.SERVO_PIN, GPIO.OUT)
+    GPIO.output(servo.SERVO_PIN, GPIO.LOW)
+    servo.PI_PORT.start(0)
+    servo.servo_write(servo.SERVO_DEFAULT_POS)
 
 
 def destroy():
-    p.stop()
-    adc.close()
+    servo.PI_PORT.stop()
     GPIO.cleanup()
-
-
-def map(value, from_low, from_high, to_low, to_high):
-    return (to_high - to_low) * (value - from_low) / (from_high - from_low) + to_low
-
-
-def servo_write(angle):
-    if angle < 0:
-        angle = 0
-    elif angle > 180:
-        angle = 180
-    p.ChangeDutyCycle(map(angle, 0, 180, SERVO_MIN_DUTY, SERVO_MAX_DUTY))
 
 
 if __name__ == '__main__':
@@ -49,13 +27,11 @@ if __name__ == '__main__':
     try:
 
         while True:
-            val_Z = GPIO.input(joy_pin)
-            val_Y = adc.get_y()
-            val_X = adc.get_x()
-
-            servo_write(val_Y*0.70)
-
-            time.sleep(0.001)
+            manette.controler.axis_l.when_moved = manette.on_axis_l_moved
+            manette.controler.axis_r.when_moved = manette.on_axis_l_moved
+            target_pos = round(manette.current_ly_pos + 5)
+            servo.servo_write(target_pos)
+            signal.pause()
 
     except KeyboardInterrupt:
         destroy()
