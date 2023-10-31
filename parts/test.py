@@ -30,7 +30,7 @@ if __name__ == '__main__':
             print("ly pos: {0} - servo pos: {1} - target : {2}".format(manette.current_ly_pos, servo.current_pos, target_pos))
 
             servo.servo_write(target_pos)
-            time.sleep(0.001)
+            time.sleep(0.1)
 
     except KeyboardInterrupt:
         destroy()
