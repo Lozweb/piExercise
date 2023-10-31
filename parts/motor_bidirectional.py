@@ -8,7 +8,6 @@ motoRPin2 = 11
 enablePin = 15
 manette = Manette(0)
 
-
 def setup():
     global p
     GPIO.setmode(GPIO.BOARD)
@@ -27,6 +26,7 @@ def mapNUM(value, fromLow, fromHigh, toLow, toHigh):
 # motor function: determine the direction and speed of the motor according to the input ADC value input
 def motor(direction, trig_pos):
     value = (trig_pos*100) - 128
+    print(value)
 
     if direction == "forward":
         GPIO.output(motoRPin1, GPIO.HIGH)
@@ -48,8 +48,10 @@ def motor(direction, trig_pos):
 
 
 def loop():
+
     global current_direction
     current_direction = "forward"
+
     while True:
 
         if manette.trig_r_press:
@@ -57,6 +59,7 @@ def loop():
                 current_direction = "backward"
             else:
                 current_direction = "forward"
+
         acceleration = round(manette.trig_rt_pos)
         print("direction : {0} acceleration : {1}".format(current_direction, acceleration))
         motor(current_direction, acceleration)
