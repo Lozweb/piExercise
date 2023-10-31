@@ -1,6 +1,6 @@
 import RPi.GPIO as GPIO
 import time
-from ADCDevice import *
+from parts.archived.ADCDevice import *
 
 Z_Pin = 12
 adc = ADCDevice()

@@ -1,4 +1,3 @@
-import signal
 from xbox360controller import Xbox360Controller
 
 
