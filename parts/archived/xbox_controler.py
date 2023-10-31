@@ -28,34 +28,34 @@ try:
         controller.button_a.when_released = on_button_released
 
         controller.button_b.when_pressed = on_button_pressed
-        controller.button_b.when_released = on_button_pressed
+        controller.button_b.when_released = on_button_released
 
         controller.button_x.when_pressed = on_button_pressed
-        controller.button_x.when_released = on_button_pressed
+        controller.button_x.when_released = on_button_released
 
         controller.button_y.when_pressed = on_button_pressed
-        controller.button_y.when_released = on_button_pressed
+        controller.button_y.when_released = on_button_released
 
         controller.button_mode.when_pressed = on_button_pressed
-        controller.button_mode.when_released = on_button_pressed
+        controller.button_mode.when_released = on_button_released
 
         controller.button_select.when_pressed = on_button_pressed
-        controller.button_select.when_released = on_button_pressed
+        controller.button_select.when_released = on_button_released
 
         controller.button_start.when_pressed = on_button_pressed
-        controller.button_start.when_released = on_button_pressed
+        controller.button_start.when_released = on_button_released
 
         controller.button_thumb_l.when_pressed = on_button_pressed
-        controller.button_thumb_l.when_released = on_button_pressed
+        controller.button_thumb_l.when_released = on_button_released
 
         controller.button_thumb_r.when_pressed = on_button_pressed
-        controller.button_thumb_r.when_released = on_button_pressed
+        controller.button_thumb_r.when_released = on_button_released
 
         controller.button_trigger_l.when_pressed = on_button_pressed
-        controller.button_trigger_l.when_released = on_button_pressed
+        controller.button_trigger_l.when_released = on_button_released
 
         controller.button_trigger_r.when_pressed = on_button_pressed
-        controller.button_trigger_r.when_released = on_button_pressed
+        controller.button_trigger_r.when_released = on_button_released
 
         controller.trigger_l.when_moved = on_trigger_moved
         controller.trigger_r.when_moved = on_trigger_moved

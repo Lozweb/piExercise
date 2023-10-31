@@ -40,6 +40,11 @@ def motor(direction, trig_pos):
         GPIO.output(motoRPin2, GPIO.HIGH)
         print('Turn Backward...')
 
+    elif value == 0:
+        GPIO.output(motoRPin1, GPIO.LOW)
+        GPIO.output(motoRPin2, GPIO.LOW)
+        print('Motor Stop...')
+
     else:
         GPIO.output(motoRPin1, GPIO.LOW)
         GPIO.output(motoRPin2, GPIO.LOW)
