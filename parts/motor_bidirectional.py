@@ -25,7 +25,9 @@ def mapNUM(value, fromLow, fromHigh, toLow, toHigh):
 
 # motor function: determine the direction and speed of the motor according to the input ADC value input
 def motor(direction, trig_pos):
-    value = ((trig_pos*100) - 128)*-1
+
+    value = (round(trig_pos*100)-255)*-1
+
     print(value)
 
     if direction == "forward":
@@ -55,7 +57,7 @@ def loop():
     while True:
 
         manette.controler.trigger_r.when_moved = manette.on_trigger_rt_moved
-        acceleration = round(manette.trig_rt_pos)
+        acceleration = manette.trig_rt_pos
         print("direction : {0} acceleration : {1}".format(current_direction, acceleration))
         motor(current_direction, acceleration)
         time.sleep(0.2)
