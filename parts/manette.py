@@ -9,7 +9,6 @@ class Manette:
         self.ly_pos = 0
         self.trig_lt_pos = 0
         self.trig_rt_pos = 0
-
         self.direction = "forward"
 
     def on_axis_l_moved(self, axis):
@@ -21,7 +20,6 @@ class Manette:
 
     def on_trigger_rt_moved(self, axis):
         self.trig_rt_pos = axis.value
-
 
     def on_button_trigger_r_released(self):
         if self.direction == "forward":
