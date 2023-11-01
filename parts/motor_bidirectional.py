@@ -1,15 +1,22 @@
 import RPi.GPIO as GPIO
 import time
 from manette import Manette
+from servo_sg90 import Sg90
 
 # define the pins connected to L293D
+
+debug = True
 Motor1A = 24
 Motor1B = 23
 Motor1E = 25
+servo = Sg90(90, 17)
 manette = Manette(0)
+
 
 def setup():
     global p
+    servo.PI_PORT.start(0)
+    servo.servo_write(servo.SERVO_DEFAULT_POS)
     GPIO.setmode(GPIO.BCM)
     GPIO.setup(Motor1A, GPIO.OUT)  # set pins to OUTPUT mode
     GPIO.setup(Motor1B, GPIO.OUT)
@@ -56,6 +63,12 @@ def change_direction(current_direction):
         return "forward"
 
 
+
+def log(ly_pos, servo_current_pos, target):
+    if debug:
+        print("ly pos: {0} - servo pos: {1} - target : {2}"
+              .format(ly_pos, servo_current_pos, target))
+
 def loop():
 
     while True:
@@ -67,10 +80,16 @@ def loop():
         print("direction : {0} acceleration : {1}".format(direction, acceleration))
         motor(direction, acceleration)
 
+        manette.controler.axis_l.when_moved = manette.on_axis_l_moved
+        target_pos = servo.current_pos + round(manette.ly_pos)
+        servo.servo_write(target_pos)
+        log(manette.ly_pos, servo.current_pos, target_pos)
+
         time.sleep(0.2)
 
 
 def destroy():
+    servo.PI_PORT.stop()
     manette.controler.close()
     GPIO.cleanup()
 

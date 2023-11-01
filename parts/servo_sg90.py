@@ -5,7 +5,7 @@ class Sg90:
 
     def __init__(self, default_pos, servo_pin):
         self.SERVO_PIN = servo_pin
-        GPIO.setmode(GPIO.BOARD)
+        GPIO.setmode(GPIO.BCM)
         GPIO.setup(self.SERVO_PIN, GPIO.OUT)
         GPIO.output(self.SERVO_PIN, GPIO.LOW)
         self.PI_PORT = GPIO.PWM(self.SERVO_PIN, 50)
