@@ -9,7 +9,7 @@ debug = True
 Motor1A = 24
 Motor1B = 23
 Motor1E = 25
-servo = Sg90(90, 17)
+servo = Sg90(00, 17)
 manette = Manette(0)
 
 
@@ -30,7 +30,16 @@ def mapNUM(value, fromLow, fromHigh, toLow, toHigh):
 
 # motor function: determine the direction and speed of the motor according to the input ADC value input
 def motor(direction, trig_pos):
-    value = (round(trig_pos * 100))
+    tpos = 0
+
+    if 0.3 > trig_pos > 0:
+        tpos = 0
+    elif -0.3 < trig_pos < 0:
+        tpos = 0
+    else:
+        tpos = trig_pos
+
+    value = (round(tpos * 100))
 
     print(value)
 
