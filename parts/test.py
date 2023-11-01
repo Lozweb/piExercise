@@ -4,7 +4,7 @@ from servo_sg90 import Sg90
 import time
 
 
-debug = False
+debug = True
 manette = Manette(0)
 servo = Sg90(90, 12)
 

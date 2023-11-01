@@ -67,10 +67,8 @@ def loop():
 
         manette.controler.button_trigger_r.when_released = manette.on_button_trigger_r_released
         manette.controler.trigger_r.when_moved = manette.on_trigger_rt_moved
-
         direction = manette.direction
         acceleration = manette.trig_rt_pos
-
         print("direction : {0} acceleration : {1}".format(direction, acceleration))
         motor(direction, acceleration)
 
