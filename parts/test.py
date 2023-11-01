@@ -6,7 +6,7 @@ import time
 
 debug = True
 manette = Manette(0)
-servo = Sg90(90, 12)
+servo = Sg90(90, 17)
 
 
 def setup():
