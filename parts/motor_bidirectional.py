@@ -9,7 +9,7 @@ debug = True
 Motor1A = 24
 Motor1B = 23
 Motor1E = 25
-servo = Sg90(00, 17)
+servo = Sg90(80, 17)
 manette = Manette(0)
 
 
