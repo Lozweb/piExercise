@@ -67,7 +67,7 @@ def log(ly_pos, servo_current_pos, target, direction, acceleration):
         print("ly pos: {0} - servo pos: {1} - target : {2}"
               .format(ly_pos, servo_current_pos, target))
 
-        print("direction : {0} acceleration : {1}".format(direction, acceleration))
+        # print("direction : {0} acceleration : {1}".format(direction, acceleration))
 
 
 def loop():
