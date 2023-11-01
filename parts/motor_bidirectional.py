@@ -30,8 +30,7 @@ def mapNUM(value, fromLow, fromHigh, toLow, toHigh):
 
 # motor function: determine the direction and speed of the motor according to the input ADC value input
 def motor(direction, trig_pos):
-
-    value = (round(trig_pos*100))
+    value = (round(trig_pos * 100))
 
     print(value)
 
@@ -63,27 +62,29 @@ def change_direction(current_direction):
         return "forward"
 
 
-
-def log(ly_pos, servo_current_pos, target):
+def log(ly_pos, servo_current_pos, target, direction, acceleration):
     if debug:
         print("ly pos: {0} - servo pos: {1} - target : {2}"
               .format(ly_pos, servo_current_pos, target))
 
+        print("direction : {0} acceleration : {1}".format(direction, acceleration))
+
+
 def loop():
-
     while True:
-
         manette.controler.button_trigger_r.when_released = manette.on_button_trigger_r_released
         manette.controler.trigger_r.when_moved = manette.on_trigger_rt_moved
         direction = manette.direction
         acceleration = manette.trig_rt_pos
-        print("direction : {0} acceleration : {1}".format(direction, acceleration))
+
         motor(direction, acceleration)
 
         manette.controler.axis_l.when_moved = manette.on_axis_l_moved
         target_pos = servo.current_pos + round(manette.ly_pos)
+
         servo.servo_write(target_pos)
-        log(manette.ly_pos, servo.current_pos, target_pos)
+
+        log(manette.ly_pos, servo.current_pos, target_pos, direction, acceleration)
 
         time.sleep(0.01)
 
