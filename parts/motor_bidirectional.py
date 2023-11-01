@@ -28,13 +28,13 @@ def motor(direction, trig_pos):
 
     print(value)
 
-    if direction == "forward":
+    if direction == "forward" and value > 0:
         GPIO.output(Motor1A, GPIO.HIGH)
         GPIO.output(Motor1B, GPIO.LOW)
         GPIO.output(Motor1E, GPIO.HIGH)
         print('Turn Forward...')
 
-    elif direction == "backward":
+    elif direction == "backward" and value > 0:
         GPIO.output(Motor1A, GPIO.LOW)
         GPIO.output(Motor1B, GPIO.HIGH)
         GPIO.output(Motor1E, GPIO.HIGH)
