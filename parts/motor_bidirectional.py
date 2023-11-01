@@ -85,7 +85,7 @@ def loop():
         servo.servo_write(target_pos)
         log(manette.ly_pos, servo.current_pos, target_pos)
 
-        time.sleep(0.2)
+        time.sleep(0.01)
 
 
 def destroy():
