@@ -3,19 +3,17 @@ import time
 from manette import Manette
 
 # define the pins connected to L293D
-motoRPin1 = 13
-motoRPin2 = 11
-enablePin = 15
+Motor1A = 24
+Motor1B = 23
+Motor1E = 25
 manette = Manette(0)
 
 def setup():
     global p
-    GPIO.setmode(GPIO.BOARD)
-    GPIO.setup(motoRPin1, GPIO.OUT)  # set pins to OUTPUT mode
-    GPIO.setup(motoRPin2, GPIO.OUT)
-    GPIO.setup(enablePin, GPIO.OUT)
-    p = GPIO.PWM(enablePin, 1000)  # creat PWM and set Frequence to 1KHz
-    p.start(0)
+    GPIO.setmode(GPIO.BCM)
+    GPIO.setup(Motor1A, GPIO.OUT)  # set pins to OUTPUT mode
+    GPIO.setup(Motor1B, GPIO.OUT)
+    GPIO.setup(Motor1E, GPIO.OUT)
 
 
 # mapNUM function: map the value from a range of mapping to another range.
@@ -31,27 +29,24 @@ def motor(direction, trig_pos):
     print(value)
 
     if direction == "forward":
-        GPIO.output(motoRPin1, GPIO.HIGH)
-        GPIO.output(motoRPin2, GPIO.LOW)
+        GPIO.output(Motor1A, GPIO.HIGH)
+        GPIO.output(Motor1B, GPIO.LOW)
+        GPIO.output(Motor1E, GPIO.HIGH)
         print('Turn Forward...')
 
     elif direction == "backward":
-        GPIO.output(motoRPin1, GPIO.LOW)
-        GPIO.output(motoRPin2, GPIO.HIGH)
+        GPIO.output(Motor1A, GPIO.LOW)
+        GPIO.output(Motor1B, GPIO.HIGH)
+        GPIO.output(Motor1E, GPIO.HIGH)
         print('Turn Backward...')
 
     elif value == 0:
-        GPIO.output(motoRPin1, GPIO.LOW)
-        GPIO.output(motoRPin2, GPIO.LOW)
+        GPIO.output(Motor1E, GPIO.LOW)
         print('Motor Stop...')
 
     else:
-        GPIO.output(motoRPin1, GPIO.LOW)
-        GPIO.output(motoRPin2, GPIO.LOW)
+        GPIO.output(Motor1E, GPIO.LOW)
         print('Motor Stop...')
-
-    p.start(mapNUM(value, 0, 128, 0, 100))
-    print('The PWM duty cycle is %d%%\n' % value) # print PMW duty cycle.
 
 
 def change_direction(current_direction):
@@ -76,7 +71,6 @@ def loop():
 
 
 def destroy():
-    p.stop()  # stop PWM
     manette.controler.close()
     GPIO.cleanup()
 
