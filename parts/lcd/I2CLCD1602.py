@@ -11,7 +11,7 @@ def loop():
     while True:
         # lcd.clear()
         lcd.setCursor(0, 0)  # set cursor position
-        lcd.message("Essai de message super long pour voir ce que ça fait, avec des caractère chelou éàççà_èù^$*ù:!:;\n")  # display the time
+        lcd.message("Essai de message super long sans saut de ligne sans caractère spéciaux")  # display the time
         sleep(5)
 
 
