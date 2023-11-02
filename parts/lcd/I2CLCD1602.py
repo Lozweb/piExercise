@@ -11,15 +11,8 @@ def loop():
     while True:
         # lcd.clear()
         lcd.setCursor(0, 0)  # set cursor position
-        lcd.message("Bonjour, je m'appelle Stitch")  # display the time
-        sleep(1)
-        lcd.message("test")  # display the time
-        sleep(1)
-        lcd.message("Bonjour, je m'appelle Stitch \n")  # display the time
-        sleep(1)
         lcd.message("Essai de message super long pour voir ce que ça fait, avec des caractère chelou éàççà_èù^$*ù:!:;\n")  # display the time
-        sleep(1)
-
+        sleep(5)
 
 
 def destroy():
