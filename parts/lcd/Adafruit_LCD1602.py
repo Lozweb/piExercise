@@ -1,3 +1,4 @@
+import time
 from time import sleep
 
 
@@ -201,3 +202,4 @@ if __name__ == '__main__':
     lcd = AdafruitCharlcd()
     lcd.clear()
     lcd.message("  Adafruit 16x2\n  Standard LCD")
+    time.sleep(10)
