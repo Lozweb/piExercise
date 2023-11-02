@@ -1,19 +1,8 @@
 from PCF8574 import PCF8574_GPIO
 from Adafruit_LCD1602 import Adafruit_CharLCD
 
-from time import sleep, strftime
+from time import sleep
 from datetime import datetime
-
-
-def get_cpu_temp():  # get CPU temperature and store it into file "/sys/class/thermal/thermal_zone0/temp"
-    tmp = open('/sys/class/thermal/thermal_zone0/temp')
-    cpu = tmp.read()
-    tmp.close()
-    return '{:.2f}'.format(float(cpu) / 1000) + ' C'
-
-
-def get_time_now():  # get system time
-    return datetime.now().strftime('    %H:%M:%S')
 
 
 def loop():
@@ -22,9 +11,15 @@ def loop():
     while True:
         # lcd.clear()
         lcd.setCursor(0, 0)  # set cursor position
-        lcd.message('CPU: ' + get_cpu_temp() + '\n')  # display CPU temperature
-        lcd.message("Stitch")  # display the time
+        lcd.message("Bonjour, je m'appelle Stitch")  # display the time
         sleep(1)
+        lcd.message("test")  # display the time
+        sleep(1)
+        lcd.message("Bonjour, je m'appelle Stitch \n")  # display the time
+        sleep(1)
+        lcd.message("Essai de message super long pour voir ce que ça fait, avec des caractère chelou éàççà_èù^$*ù:!:;\n")  # display the time
+        sleep(1)
+
 
 
 def destroy():
