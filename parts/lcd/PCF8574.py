@@ -13,6 +13,9 @@ class PCF8574_I2C(object):
         self.currentValue = 0
         self.write_byte(0)  # I2C test.
 
+    def destroy(self):
+        self.bus.destroy()
+
     def read_byte(self):  # Read PCF8574 all port of the data
         # value = self.bus.read_byte(self.address)
         return self.currentValue  # value

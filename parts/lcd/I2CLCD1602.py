@@ -43,6 +43,7 @@ except:
     except:
         print('I2C Address Error !')
         exit(1)
+
 # Create LCD, passing in MCP GPIO adapter.
 lcd = AdafruitCharlcd(pin_rs=0, pin_e=2, pins_db=[4, 5, 6, 7], GPIO=mcp)
 
