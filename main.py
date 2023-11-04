@@ -23,7 +23,7 @@ if __name__ == '__main__':
         while True:
             print("input target")
             angle = input()
-            servo.servo_write(angle)
+            servo.servo_write(int(angle))
 
 
     except KeyboardInterrupt:
