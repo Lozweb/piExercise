@@ -40,12 +40,9 @@ class Sg90:
 
     def move_to(self, direction):
         if direction == "left":
-            print("move to left")
             self.set_angle(self.MIN_VALUE)
         elif direction == "right":
-            print("move to right")
             self.set_angle(self.MAX_VALUE)
         else:
-            print("straight")
             self.set_angle(self.SERVO_DEFAULT_POS)
 

@@ -13,6 +13,7 @@ class Manette:
         self.direction = "forward"
 
     def on_axis_l_moved(self, axis):
+        print(str(axis.x))
         if axis.x < 0:
             self.lx_pos = axis.x if axis.x < self.l_dead_zone_min else 0
         else:
