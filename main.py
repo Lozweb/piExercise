@@ -21,17 +21,10 @@ if __name__ == '__main__':
     try:
 
         while True:
-            print("target 90°")
-            servo.servo_write(90)
-            time.sleep(5)
+            print("input target")
+            angle = input()
+            servo.servo_write(angle)
 
-            print("target 0°")
-            servo.servo_write(0)
-            time.sleep(5)
-
-            print("target 180")
-            servo.servo_write(100)
-            time.sleep(5)
 
     except KeyboardInterrupt:
         destroy()
