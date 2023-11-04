@@ -21,10 +21,13 @@ if __name__ == '__main__':
     try:
 
         while True:
+            print("target 90°")
+            servo.servo_write(90)
             print("target 10°")
             servo.servo_write(10)
             time.sleep(5)
             print("target 170")
+            servo.servo_write(170)
             time.sleep(5)
 
     except KeyboardInterrupt:
