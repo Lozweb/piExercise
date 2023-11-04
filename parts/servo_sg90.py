@@ -23,8 +23,8 @@ class Sg90:
         if angle < 0:
             angle = 0
 
-        elif angle > 180:
-            angle = 180
+        elif angle > 167:
+            angle = 167
 
         self.PI_PORT.ChangeDutyCycle(
             self.mapping(
