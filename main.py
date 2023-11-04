@@ -1,16 +1,31 @@
-# This is a sample Python script.
+import RPi.GPIO as GPIO
+from parts.servo_sg90 import Sg90
+import time
 
-# Press Maj+F10 to execute it or replace it with your code.
-# Press Double Shift to search everywhere for classes, files, tool windows, actions, and settings.
-
-
-def print_hi(name):
-    # Use a breakpoint in the code line below to debug your script.
-    print(f'Hi, {name}')  # Press Ctrl+F8 to toggle the breakpoint.
+servo = Sg90(90, 17)
 
 
-# Press the green button in the gutter to run the script.
+def setup():
+    servo.PI_PORT.start(0)
+    servo.servo_write(servo.SERVO_DEFAULT_POS)
+
+
+def destroy():
+    servo.PI_PORT.stop()
+    GPIO.cleanup()
+
+
 if __name__ == '__main__':
-    print_hi('PyCharm')
+    print('Program is starting ... ')
+    setup()
+    try:
 
-# See PyCharm help at https://www.jetbrains.com/help/pycharm/
+        while True:
+            print("target 10°")
+            servo.servo_write(10)
+            time.sleep(5)
+            print("target 170")
+            time.sleep(5)
+
+    except KeyboardInterrupt:
+        destroy()
