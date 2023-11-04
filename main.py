@@ -27,10 +27,10 @@ if __name__ == '__main__':
 
             manette.controler.axis_l.when_moved = manette.on_axis_l_moved
 
-            if manette.ly_pos < 0:
+            if manette.lx_pos < 0:
                 servo.move_to("left")
 
-            elif manette.ly_pos > 0:
+            elif manette.lx_pos > 0:
                 servo.move_to("right")
 
             else:
