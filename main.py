@@ -26,7 +26,7 @@ if __name__ == '__main__':
         while True:
 
             manette.controler.axis_l.when_moved = manette.on_axis_l_moved
-
+            print(str(manette.lx_pos))
             if manette.lx_pos < 0:
                 servo.move_to("left")
 
