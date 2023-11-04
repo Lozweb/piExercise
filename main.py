@@ -2,12 +2,12 @@ import RPi.GPIO as GPIO
 from parts.servo_sg90 import Sg90
 import time
 
-servo = Sg90(90, 17)
+servo = Sg90(90, 17, 105, 78)
 
 
 def setup():
     servo.PI_PORT.start(0)
-    servo.servo_write(servo.SERVO_DEFAULT_POS)
+    servo.move_to(servo.SERVO_DEFAULT_POS)
 
 
 def destroy():
@@ -23,7 +23,7 @@ if __name__ == '__main__':
         while True:
             print("input target")
             angle = input()
-            servo.servo_write(int(angle))
+            servo.move_to(int(angle))
 
 
     except KeyboardInterrupt:
