@@ -17,12 +17,11 @@ class Sg90:
         self.MAX_VALUE = max_value
         self.MIN_VALUE = min_value
 
-
     @staticmethod
     def mapping(value, from_low, from_high, to_low, to_high):
         return (to_high - to_low) * (value - from_low) / (from_high - from_low) + to_low
 
-    def move_to(self, angle):
+    def set_angle(self, angle):
         if angle < self.MIN_VALUE:
             angle = self.MIN_VALUE
 
@@ -38,3 +37,15 @@ class Sg90:
                 self.SERVO_MAX_DUTY))
 
         self.current_pos = angle
+
+    def move_to(self, direction):
+        if direction == "left":
+            print("move to left")
+            self.set_angle(self.MIN_VALUE)
+        elif direction == "right":
+            print("move to right")
+            self.set_angle(self.MAX_VALUE)
+        else:
+            print("straight")
+            self.set_angle(self.SERVO_DEFAULT_POS)
+
