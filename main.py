@@ -25,12 +25,12 @@ if __name__ == '__main__':
             servo.servo_write(90)
             time.sleep(5)
 
-            print("target 10°")
-            servo.servo_write(10)
+            print("target 0°")
+            servo.servo_write(0)
             time.sleep(5)
 
-            print("target 170")
-            servo.servo_write(170)
+            print("target 180")
+            servo.servo_write(100)
             time.sleep(5)
 
     except KeyboardInterrupt:
