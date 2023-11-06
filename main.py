@@ -5,7 +5,7 @@ from parts.servo_sg90 import Sg90
 from parts.manette import Manette
 
 servo = Sg90(90, 17, 105, 78)
-manette = Manette(1)
+manette = Manette(0)
 
 
 def setup():
