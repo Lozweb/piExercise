@@ -36,9 +36,11 @@ if __name__ == '__main__':
             motor.set_motor(direction, acceleration)
 
             if manette.lx_pos < 0:
+                print("turn left")
                 servo.move_to("left")
 
             elif manette.lx_pos > 0:
+                print("turn right")
                 servo.move_to("right")
 
             else:
