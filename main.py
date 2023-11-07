@@ -4,7 +4,7 @@ from parts.servo_sg90 import Sg90
 from parts.manette import Manette
 from parts.motor import Motor
 
-servo = Sg90(90, 17, 105, 78)
+servo = Sg90(90, 12, 105, 78)
 motor = Motor(24, 23, 25)
 manette = Manette(0)
 
@@ -16,7 +16,6 @@ def setup():
 
 def destroy():
     servo.PI_PORT.stop()
-    manette.controler.stop()
     GPIO.cleanup()
 
 
