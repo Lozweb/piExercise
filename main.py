@@ -33,9 +33,9 @@ if __name__ == '__main__':
 
             manette.controler.button_x.when_released = manette.on_button_x_release
             manette.controler.trigger_r.when_moved = manette.on_trigger_rt_moved
+
             direction = manette.direction
             acceleration = manette.trig_rt_pos
-
             motor.set_motor(direction, acceleration)
 
             if manette.lx_pos < 0:
