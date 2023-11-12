@@ -11,6 +11,7 @@ class Manette:
         self.trig_lt_pos = 0
         self.trig_rt_pos = 0
         self.direction = "forward"
+        self.phare_is_active = False
 
     def on_axis_l_moved(self, axis):
         if axis.x < 0:
@@ -29,8 +30,13 @@ class Manette:
         self.trig_rt_pos = axis.value
 
     def on_button_x_release(self, button):
-        print(button.name)
         if self.direction == "forward":
             self.direction = "backward"
         else:
             self.direction = "forward"
+
+    def on_button_a_release(self, button):
+        if not self.phare_is_active:
+            self.phare_is_active = True
+        else:
+            self.phare_is_active = False
