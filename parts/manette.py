@@ -28,7 +28,7 @@ class Manette:
     def on_trigger_rt_moved(self, axis):
         self.trig_rt_pos = axis.value
 
-    def on_button_trigger_r_released(self, button):
+    def on_button_x_release(self, button):
         if self.direction == "forward":
             self.direction = "backward"
         else:

@@ -9,6 +9,7 @@ servo = Sg90(90, 12, 105, 78)
 motor = Motor(24, 23, 25)
 manette = Manette(0)
 stopLight = Led(18)
+phare = Led
 
 
 def setup():
@@ -30,7 +31,7 @@ if __name__ == '__main__':
 
             manette.controler.axis_l.when_moved = manette.on_axis_l_moved
 
-            manette.controler.button_trigger_r.when_released = manette.on_button_trigger_r_released
+            manette.controler.button_x.when_released = manette.on_button_x_release
             manette.controler.trigger_r.when_moved = manette.on_trigger_rt_moved
             direction = manette.direction
             acceleration = manette.trig_rt_pos
