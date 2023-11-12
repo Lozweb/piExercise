@@ -3,10 +3,12 @@ import RPi.GPIO as GPIO
 from parts.servo_sg90 import Sg90
 from parts.manette import Manette
 from parts.motor import Motor
+from parts.led import Led
 
 servo = Sg90(90, 12, 105, 78)
 motor = Motor(24, 23, 25)
 manette = Manette(0)
+stopLight = Led(18)
 
 
 def setup():
@@ -45,6 +47,11 @@ if __name__ == '__main__':
 
             else:
                 servo.move_to("straight")
+
+            if not motor.isRunning:
+                stopLight.on()
+            else:
+                stopLight.off()
 
             time.sleep(0.1)
 
