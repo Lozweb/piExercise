@@ -10,6 +10,8 @@ motor = Motor(24, 23, 25)
 manette = Manette(0)
 stopLight = Led(20)
 phare = Led(21)
+turn_l = Led(16)
+turn_r = Led(12)
 
 
 def setup():
@@ -33,6 +35,8 @@ if __name__ == '__main__':
             manette.controler.button_x.when_released = manette.on_button_x_release
             manette.controler.trigger_r.when_moved = manette.on_trigger_rt_moved
             manette.controler.button_a.when_released = manette.on_button_a_release
+            manette.controler.button_trigger_r.when_released = manette.on_button_r1_release
+            manette.controler.button_trigger_l.when_released = manette.on_button_l1_release
 
             direction = manette.direction
             acceleration = manette.trig_rt_pos
@@ -58,6 +62,16 @@ if __name__ == '__main__':
                 phare.on()
             else:
                 phare.off()
+
+            if manette.turn_r_is_active:
+                turn_r.on()
+            else:
+                turn_r.off()
+
+            if manette.turn_l_is_active:
+                turn_l.on()
+            else:
+                turn_l.off()
 
             time.sleep(0.1)
 

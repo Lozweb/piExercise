@@ -12,6 +12,8 @@ class Manette:
         self.trig_rt_pos = 0
         self.direction = "forward"
         self.phare_is_active = False
+        self.turn_l_is_active = False
+        self.turn_r_is_active = False
 
     def on_axis_l_moved(self, axis):
         if axis.x < 0:
@@ -40,3 +42,20 @@ class Manette:
             self.phare_is_active = True
         else:
             self.phare_is_active = False
+
+    def on_button_r1_release(self, button):
+
+        if not self.turn_r_is_active:
+            self.turn_r_is_active = True
+            if self.turn_l_is_active:
+                self.turn_l_is_active = False
+        else:
+            self.turn_r_is_active = False
+
+    def on_button_l1_release(self, button):
+        if not self.turn_l_is_active:
+            self.turn_l_is_active = True
+            if self.turn_r_is_active:
+                self.turn_r_is_active = False
+        else:
+            self.turn_l_is_active = False

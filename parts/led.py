@@ -13,3 +13,6 @@ class Led:
 
     def off(self):
         GPIO.output(self.LED_PIN, GPIO.LOW)
+
+
+
