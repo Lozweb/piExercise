@@ -19,5 +19,6 @@ class Led:
         GPIO.output(self.LED_PIN, GPIO.HIGH)
         time.sleep(0.3)
         GPIO.output(self.LED_PIN, GPIO.LOW)
+        time.sleep(0.3)
 
 
