@@ -1,4 +1,5 @@
 import RPi.GPIO as GPIO
+import time
 
 
 class Led:
@@ -14,5 +15,9 @@ class Led:
     def off(self):
         GPIO.output(self.LED_PIN, GPIO.LOW)
 
+    def flashing_on(self):
+        GPIO.output(self.LED_PIN, GPIO.HIGH)
+        time.sleep(0.1)
+        GPIO.output(self.LED_PIN, GPIO.LOW)
 
 

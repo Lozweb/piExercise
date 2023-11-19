@@ -64,12 +64,12 @@ if __name__ == '__main__':
                 phare.off()
 
             if manette.turn_r_is_active:
-                turn_r.on()
+                turn_r.flashing_on()
             else:
                 turn_r.off()
 
             if manette.turn_l_is_active:
-                turn_l.on()
+                turn_l.flashing_on()
             else:
                 turn_l.off()
 
