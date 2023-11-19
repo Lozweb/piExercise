@@ -17,7 +17,7 @@ class Led:
 
     def flashing_on(self):
         GPIO.output(self.LED_PIN, GPIO.HIGH)
-        time.sleep(0.1)
+        time.sleep(0.3)
         GPIO.output(self.LED_PIN, GPIO.LOW)
 
 
