@@ -5,10 +5,10 @@ from parts.manette import Manette
 from parts.motor import Motor
 from parts.led import Led
 
-servo = Sg90(90, 12, 105, 78)
+servo = Sg90(90, 7, 105, 78)
 motor = Motor(24, 23, 25)
 manette = Manette(0)
-stopLight = Led(18)
+stopLight = Led(20)
 phare = Led(21)
 
 
