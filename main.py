@@ -111,5 +111,5 @@ if __name__ == '__main__':
         thread_light_setter.start()
         thread_flashing_light.start()
 
-    except KeyboardInterrupt:
+    except (KeyboardInterrupt, SystemExit):
         destroy()
